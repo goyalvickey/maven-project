@@ -4,13 +4,14 @@ pipeline {
 
     stages {
         stage('SCM Checkout'){
-          git 'https://github.com/goyalvickey/maven-project.git'
+          git 'https://github.com/prakashk0301/maven-project'
         }
-
+    }
+    {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'Local_Maven') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn clean compile'
                 }
             }
@@ -19,7 +20,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'Local_Maven') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn test'
                 }
             }
@@ -28,10 +29,10 @@ pipeline {
 
         stage ('install Stage') {
             steps {
-                withMaven(maven : 'Local_Maven') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn install'
                 }
             }
         }
-   }
+	}
 }
