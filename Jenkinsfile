@@ -37,7 +37,7 @@ pipeline {
 		
 	stage('deply to tomcat') {
 		steps {
-			sshagent(credentials: ['f9dbc14e-b0c0-4766-993f-4a5e1750caf2']) {
+			sshagent(credentials: ['a3c9973b-1e58-49f5-bfff-7fd85b3f8234']) {
 			sh 'ssh -o StrictHostKeyChecking=no -l */target/*.war ec2-user@172.31.22.77:/var/lib/tomcat/webapps/'
 			}
 		}
