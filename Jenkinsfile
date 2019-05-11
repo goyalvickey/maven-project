@@ -38,7 +38,7 @@ pipeline {
 	stage('deply to tomcat') {
 		steps {
 			sshagent(['a3c9973b-1e58-49f5-bfff-7fd85b3f8234']) {
-		        sh 'chmod 777 /var/lib/tomcat/webapps/*'
+//		        sh 'chmod 777 /var/lib/tomcat/webapps/*'
 			sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.22.77:/var/lib/tomcat/webapps/'
 			}
 		}
