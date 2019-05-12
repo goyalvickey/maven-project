@@ -34,7 +34,17 @@ pipeline {
                 }
             }
         }
-		
+
+        stage ('build && SonarQube analysis') {
+            steps {
+		withSonarQubeEnv('My SonarQube Server') {
+                    withMaven(maven : 'Local_Maven') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+		}	
+            }
+        }
+
 	stage('deply to tomcat') {
 		steps {
 			sshagent(['a3c9973b-1e58-49f5-bfff-7fd85b3f8234']) {
