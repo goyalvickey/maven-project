@@ -1,1 +1,4 @@
 newfile
+newfile
+int i =10;
+int i = 10;
